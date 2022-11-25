@@ -1,0 +1,28 @@
+.home-container {
+    padding-top: 64px;
+    width: 100%;
+    background-color: white;
+    background-image: url("/assets/images/background-home.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+}
+
+.home-container h1 {
+    width: 50%;
+    font-size: 5vh;
+    line-height: 7vh;
+    position: absolute;
+    left: 5%;
+    top: 30%;
+}
+
+img{
+    height: 200px;
+    width: 1093px;
+}
+
+h1{
+    margin-top: 150px;
+    font-weight: normal;
+}

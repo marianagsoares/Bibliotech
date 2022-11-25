@@ -1,1 +1,12 @@
-<p>cabecalho works!</p>
+<mat-toolbar>
+    <span>BIBLIOTECH</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="icone-menu">
+        <i class="material-icons">menu</i>
+    </button>
+    <mat-menu #menu="matMenu">
+        <a mat-menu-item routerLink="/home">Página Principal</a>
+        <a mat-menu-item routerLink="/livros">Livros</a>
+        <a mat-menu-item routerLink="/controle">Painel de Controle</a>
+        <a mat-menu-item id="logout" (click)="logout()">Sair <i class="material-icons">logout</i></a>
+    </mat-menu>
+</mat-toolbar>
