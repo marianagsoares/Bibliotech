@@ -1,1 +1,17 @@
-<p>login-usuario works!</p>
+<div id="login-container">
+    <div class="login-form">
+        <h1>LOGIN</h1><!-- (click)="(click)="signInGoogle()" -->
+        <button class="google"> 
+            <img src="assets/icons/google.svg" alt="Logo Google">
+            <h2>Continuar com Google</h2>
+        </button>
+       <div class="form">
+        <form>
+            <input type="email" placeholder="E-mail" formControlName="email">
+            <input type="password" placeholder="Senha" formControlName="senha" id="senha">
+            <button class="entrar" type="submit" >Entrar</button> <!-- (click)="signInEmailAndPassword()" -->
+        </form>
+        </div>
+        <span>Não tem conta? <a routerLink="/cadastrar">Inscreva-se</a></span>
+    </div>
+</div>
