@@ -7,7 +7,7 @@ export class LivroPipe implements PipeTransform {
 
   transform(value: string | undefined): string {
     if (value == undefined || value == null || value == "") {
-      return "assets/images/livro.png"
+      return "assets/images/livro.jpg"
     }
     return value;
   }

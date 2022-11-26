@@ -13,8 +13,8 @@ export class UploadService {
     private storage: AngularFireStorage    
   ) { }
 
-  public uploadFoto(foto: File): Observable<any> {
-    const promise = this.storage.upload(`fotos/${Date.now()}`, foto);
+  public uploadFoto(photo: File): Observable<any> {
+    const promise = this.storage.upload(`fotos/${Date.now()}`, photo);
     return from(promise).pipe(
       catchError(erro => {
         this.notificacaoService.showMessage("Erro no envio do arquivo.");
