@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IBook } from 'src/app/modelos/interfaces';
 import { BookService } from 'src/app/services/book.service';
@@ -13,7 +13,7 @@ import { UploadService } from 'src/app/services/upload.service';
 })
 export class CadastrarLivroComponent implements OnInit {
 
-  displayedColumns = ['titulo', 'categoria', 'autor', 'isbn', 'excluir'];
+  displayedColumns = ['titulo', 'categoria', 'autor', 'isbn', 'capa', 'excluir'];
   dataSource: IBook[] = [];
 
   public formRegisterBook: FormGroup;
@@ -28,7 +28,7 @@ export class CadastrarLivroComponent implements OnInit {
     private router: Router
   ) {
     this.formRegisterBook = this.formBuilder.group({
-      titulo: ["", [Validators.required]],
+      titulo: ["", [Validators.required, Validators.maxLength]],
       categoria: ["", [Validators.required]],
       autor: ["", [Validators.required]],
       isbn: ["", [Validators.required]]
@@ -57,12 +57,15 @@ export class CadastrarLivroComponent implements OnInit {
   public uploadFile(event: any): void {
     this.isLoadUpload = true;
     const file: File = event.target.files[0];
+    console.log(file)
     this.uploadService.uploadFoto(file).subscribe(uploadResult => {
       this.isLoadUpload = false;
       const storageReference = uploadResult.ref;
-      const promiseFileUrl = storageReference.getDownloadUrl();
+      console.log(storageReference)
+      const promiseFileUrl = storageReference.getDownloadURL();
       promiseFileUrl.then((photoReturned: string) => {
         this.photoUrl = photoReturned;
+        console.log(photoReturned)
       })
     })
   }
