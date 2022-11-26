@@ -1,6 +1,6 @@
 h1 {
     font-weight: normal;
-    font-size: 32px;
+    font-size: 32;
     margin-top: 0;
 }
 
@@ -121,5 +121,15 @@ label:hover {
 
 .progress-bar {
     height: 20px;
+
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
 
 }

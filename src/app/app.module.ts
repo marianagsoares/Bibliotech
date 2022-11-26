@@ -17,6 +17,8 @@ import { MaterialModule } from './modulos/material/material.module';
 import { FirebaseModule } from './modulos/firebase/firebase.module';
 import { LivroPipe } from './pipes/livro.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IsbnPipe } from './pipes/isbn.pipe';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RodapeComponent,
     DetalhesComponent,
     LivroPipe,
+    IsbnPipe,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MaterialModule,
     FirebaseModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

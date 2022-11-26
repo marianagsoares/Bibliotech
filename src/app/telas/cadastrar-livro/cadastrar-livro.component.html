@@ -17,7 +17,7 @@
             </ng-container>
             <ng-container matColumnDef="isbn">
                 <th mat-header-cell *matHeaderCellDef>ISBN</th>
-                <td mat-cell *matCellDef="let livro">{{livro.isbn}} </td>
+                <td mat-cell *matCellDef="let livro">{{livro.isbn}}</td>
             </ng-container>
             <ng-container matColumnDef="capa">
                 <th mat-header-cell *matHeaderCellDef>Capa</th>
@@ -59,7 +59,7 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>ISBN</mat-label>
-                <input type="text" matInput placeholder="ISBN do livro" formControlName="isbn">
+                <input type="text" matInput placeholder="ISBN do livro" formControlName="isbn" mask="000-0-00-000000-0">
             </mat-form-field>
             <button class="btn-submit" mat-raised-button (click)="registerBook()">Adicionar</button>
             <a class="full-width btn-close" mat-raised-button routerLink="/livros"></a>

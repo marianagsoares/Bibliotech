@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IBook } from 'src/app/modelos/interfaces';
 import { BookService } from 'src/app/services/book.service';
@@ -15,7 +15,6 @@ export class CadastrarLivroComponent implements OnInit {
 
   displayedColumns = ['titulo', 'categoria', 'autor', 'isbn', 'capa', 'excluir'];
   dataSource: IBook[] = [];
-
   public formRegisterBook: FormGroup;
   public isLoadUpload: boolean = false;
   private photoUrl: string = "";
@@ -37,6 +36,8 @@ export class CadastrarLivroComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeTable();
+
+
   }
 
   public registerBook(): void {
