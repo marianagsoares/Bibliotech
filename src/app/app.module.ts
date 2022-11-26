@@ -13,7 +13,10 @@ import { CadastrarLivroComponent } from './telas/cadastrar-livro/cadastrar-livro
 import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
 import { RodapeComponent } from './componentes/rodape/rodape.component';
 import { DetalhesComponent } from './componentes/detalhes/detalhes.component';
-import { MaterialModule } from './material/material.module';
+import { MaterialModule } from './modulos/material/material.module';
+import { FirebaseModule } from './modulos/firebase/firebase.module';
+import { LivroPipe } from './pipes/livro.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,13 +30,16 @@ import { MaterialModule } from './material/material.module';
     CadastrarLivroComponent,
     CabecalhoComponent,
     RodapeComponent,
-    DetalhesComponent
+    DetalhesComponent,
+    LivroPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FirebaseModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

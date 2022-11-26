@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-painel-de-controle',
   templateUrl: './painel-de-controle.component.html',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PainelDeControleComponent implements OnInit {
 
-  constructor() { }
+constructor(){}
 
   ngOnInit(): void {
   }

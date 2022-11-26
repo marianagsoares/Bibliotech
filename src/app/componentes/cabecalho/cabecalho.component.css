@@ -2,8 +2,6 @@ mat-toolbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: fixed;
-    top: 0;
     background-color: 
     #69B2F4;
     color: white;
