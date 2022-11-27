@@ -16,8 +16,7 @@ import { DetalhesComponent } from './componentes/detalhes/detalhes.component';
 import { MaterialModule } from './modulos/material/material.module';
 import { FirebaseModule } from './modulos/firebase/firebase.module';
 import { LivroPipe } from './pipes/livro.pipe';
-import { ReactiveFormsModule } from '@angular/forms';
-import { IsbnPipe } from './pipes/isbn.pipe';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
@@ -33,8 +32,7 @@ import { NgxMaskModule } from 'ngx-mask';
     CabecalhoComponent,
     RodapeComponent,
     DetalhesComponent,
-    LivroPipe,
-    IsbnPipe,
+    LivroPipe
   ],
   imports: [
     BrowserModule,
@@ -43,7 +41,8 @@ import { NgxMaskModule } from 'ngx-mask';
     MaterialModule,
     FirebaseModule,
     ReactiveFormsModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -51,7 +51,7 @@ const routes: Routes = [
     title: "Novo Livro | Bibliotech"
   },
   {
-    path: '',
+    path: 'emprestimo/editar/:id',
     component: EditarEmprestimoComponent,
     canActivate: [AutenticarGuard ],
     title: "Editar Empréstimo | Bibliotech"

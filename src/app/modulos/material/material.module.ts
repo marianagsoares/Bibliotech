@@ -7,18 +7,20 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [],
   exports: [
-    CommonModule,
     MatToolbarModule,
     MatMenuModule,
     MatFormFieldModule,
     MatProgressBarModule,
     MatInputModule,
     MatSnackBarModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }
