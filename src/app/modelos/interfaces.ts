@@ -3,7 +3,7 @@ export interface IBook {
     titulo: string;
     categoria: string;
     autor: string;
-    ISBN: string;
+    isbn: string;
     foto?: string;
 }
 
@@ -13,7 +13,7 @@ export interface IEmprestimo {
     email: string;
     telefone: string;
     status: string;
-    livro: IBook;
+    livro: string;
     foto?: string;
 }
 

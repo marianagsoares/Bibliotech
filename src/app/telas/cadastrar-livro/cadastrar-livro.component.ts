@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IBook } from 'src/app/modelos/interfaces';
-import { BibliotechService } from 'src/app/services/Bibliotech.service';
+import { BibliotechService } from 'src/app/services/bibliotech.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { UploadService } from 'src/app/services/upload.service';
 
