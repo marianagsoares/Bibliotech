@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IBook, IEmprestimo } from 'src/app/modelos/interfaces';
-import { BibliotechService } from 'src/app/services/Bibliotech.service';
+import { BibliotechService } from 'src/app/services/bibliotech.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { UploadService } from 'src/app/services/upload.service';
+
 
 @Component({
   selector: 'app-editar-emprestimo',
@@ -15,9 +15,8 @@ export class EditarEmprestimoComponent implements OnInit {
 
   public emprestimo!: IEmprestimo;
   booksList: IBook[] = [];
-
   statusEmprestimos: string[] = [
-      "Disponível", "Pendente", "Devolvido"
+    "Pendente", "Devolvido"
   ];
 
   constructor(
@@ -38,22 +37,24 @@ export class EditarEmprestimoComponent implements OnInit {
       this.emprestimo = emprestimoRetornado;
     })
 
-    this.bibliotechService.findAllBooks().subscribe(books =>{
+    this.bibliotechService.findAllBooks().subscribe(books => {
       this.booksList = books;
     })
   }
 
   public updateRentBook(form: NgForm): void {
-    console.log(this.emprestimo)
-    if(form.valid) {
+    if (form.valid) {
       this.bibliotechService.updateBorrow(this.emprestimo).subscribe(() => {
         this.notification.showMessage("Atualizado com sucesso.");
-        this.router.navigate(["/controle"]);
+        this.redirectToControl()
       });
     }
     else {
       this.notification.showMessage("Dados inválidos.");
     }
+  }
+  redirectToControl(){
+    this.router.navigate(["/controle"]);
   }
 
 }

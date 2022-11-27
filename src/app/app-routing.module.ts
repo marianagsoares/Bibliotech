@@ -56,7 +56,6 @@ const routes: Routes = [
     canActivate: [AutenticarGuard ],
     title: "Editar Empréstimo | Bibliotech"
   }
-
 ];
 
 @NgModule({
