@@ -34,10 +34,10 @@ export class AuthService {
          this.notification.showMessage("Erro, Usuario não encontrado!")
         }
         else if(error.code == "auth/wrong-password"){
-          alert("Senha Incorreta.")
+          this.notification.showMessage("Senha Incorreta.")
         }
         else{
-        alert("Erro ao autenticar.")
+        this.notification.showMessage("Erro ao autenticar.")
         console.error(error)
         }
         return EMPTY
@@ -51,12 +51,20 @@ export class AuthService {
     const promise = this.firebaseAuth.createUserWithEmailAndPassword(email, senha);
     return from(promise).pipe(
       catchError( error => {
-        alert("Erro ao cadastrar usuário.")
+        if (error.code == "auth/email-already-in-use"){
+          this.notification.showMessage("Erro, Usuario já cadastrado!")
+         }
+         else if(error.code == "auth/weak-password"){
+           this.notification.showMessage("A Senha deve conter no mínimo 6 caracteres.")
+         }
+         else{
+        this.notification.showMessage("Erro ao cadastrar usuário.")
         console.error(error)
+         }
         return EMPTY
       })
     );
-    
+  
     
   }
 
