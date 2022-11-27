@@ -1,1 +1,38 @@
-<p>editar-emprestimo works!</p>
+<cabecalho></cabecalho>
+<div class="container">
+    <h1>Editar emprestimo</h1>
+    <form #formEdit="ngForm" *ngIf="emprestimo">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Leitor</mat-label>
+            <input type="text" matInput placeholder="Nome do leitor" name="leitor" required
+                [(ngModel)]="emprestimo.leitor">
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input type="email" matInput placeholder="E-mail" name="email" [(ngModel)]="emprestimo.email" required>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input type="text" matInput placeholder="telefone" name="telefone" [(ngModel)]="emprestimo.telefone"
+                required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-option selected disabled value="">Selecione o status</mat-option>
+            <mat-select [(ngModel)]="emprestimo.status" name="status" required>
+                <mat-option *ngFor="let status of statusEmprestimos" value={{status}}>
+                    {{status}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-option selected disabled value="">Selecione o livro</mat-option>
+            <mat-select [(ngModel)]="emprestimo.livro" name="livro" required>
+                <mat-option *ngFor="let livro of booksList" value={{livro}}>
+                    {{livro.titulo}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button class="btn-submit" mat-raised-button (click)="updateRentBook(formEdit)">Adicionar</button>
+        <a class="full-width btn-close" mat-raised-button routerLink="/controle">Cancelar</a>
+    </form>
+</div>
