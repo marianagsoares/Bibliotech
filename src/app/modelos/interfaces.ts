@@ -17,6 +17,7 @@ export interface IEmprestimo {
     status: string;
     livro: string;
     foto?: string;
+    dataEmprestimo: Date;
 }
 
 export interface Controle {

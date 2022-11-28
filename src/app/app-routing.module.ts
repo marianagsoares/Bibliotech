@@ -45,10 +45,10 @@ const routes: Routes = [
     title: "Cadastrar Livros | Bibliotech"
   },
   {
-    path: '',
+    path: 'emprestimo/novo',
     component: NovoEmprestimoComponent,
     canActivate: [ AutenticarGuard ],
-    title: "Novo Livro | Bibliotech"
+    title: "Novo Empréstimo | Bibliotech"
   },
   {
     path: 'emprestimo/editar/:id',
