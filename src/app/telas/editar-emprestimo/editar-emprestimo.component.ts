@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IBook, IEmprestimo } from 'src/app/modelos/interfaces';
-import { BibliotechService } from 'src/app/services/bibliotech.service';
+import { EmprestimoService } from 'src/app/services/emprestimo.service';
+import { LivrosService } from 'src/app/services/livros.service';
 import { NotificationService } from 'src/app/services/notification.service';
 
 
@@ -21,9 +22,10 @@ export class EditarEmprestimoComponent implements OnInit {
 
   constructor(
     private notification: NotificationService,
-    private bibliotechService: BibliotechService,
+    private livroService: LivrosService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private emprestimoService: EmprestimoService
   ) { }
 
   ngOnInit(): void {
@@ -33,18 +35,18 @@ export class EditarEmprestimoComponent implements OnInit {
   private initializeFields(): void {
     const id = this.route.snapshot.params["id"];
 
-    this.bibliotechService.findBorrowById(id).subscribe(emprestimoRetornado => {
+    this.emprestimoService.findById(id).subscribe(emprestimoRetornado => {
       this.emprestimo = emprestimoRetornado;
     })
 
-    this.bibliotechService.findAllBooks().subscribe(books => {
+    this.livroService.findAllBooks().subscribe(books => {
       this.booksList = books;
     })
   }
 
   public updateRentBook(form: NgForm): void {
     if (form.valid) {
-      this.bibliotechService.updateBorrow(this.emprestimo).subscribe(() => {
+      this.emprestimoService.updateEmprestimo(this.emprestimo).subscribe(() => {
         this.notification.showMessage("Atualizado com sucesso.");
         this.redirectToControl()
       });
@@ -53,7 +55,7 @@ export class EditarEmprestimoComponent implements OnInit {
       this.notification.showMessage("Dados inválidos.");
     }
   }
-  redirectToControl(){
+  redirectToControl() {
     this.router.navigate(["/controle"]);
   }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IBook, IEmprestimo } from 'src/app/modelos/interfaces';
-import { BibliotechService } from 'src/app/services/bibliotech.service';
+import { LivrosService } from 'src/app/services/livros.service';
 import { EmprestimoService } from 'src/app/services/emprestimo.service';
 import { NotificationService } from 'src/app/services/notification.service';
 
@@ -24,7 +24,7 @@ export class NovoEmprestimoComponent implements OnInit {
     fb: FormBuilder,
     private notification: NotificationService,
     private emprestimoService: EmprestimoService,
-    private bibliotechService: BibliotechService,
+   private livroService: LivrosService,
     private router: Router,
   ) { 
     this.formEmprestimo = fb.group({
@@ -57,7 +57,7 @@ export class NovoEmprestimoComponent implements OnInit {
   }
 
   private initializeFields(): void {
-    this.bibliotechService.findAllBooks().subscribe(books => {
+    this.livroService.findAllBooks().subscribe(books => {
       this.booksList = books;
     })
   }

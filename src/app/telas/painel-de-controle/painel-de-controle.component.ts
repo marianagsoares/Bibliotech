@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { NotificationService } from 'src/app/services/notification.service';
 import { MatDialog } from '@angular/material/dialog'
 import { DetalhesComponent } from 'src/app/componentes/detalhes/detalhes.component';
-import { ControleService } from 'src/app/services/controle.service';
-import { BibliotechService } from 'src/app/services/bibliotech.service';
+import { EmprestimoService } from 'src/app/services/emprestimo.service';
+import { LivrosService } from 'src/app/services/livros.service';
 
 @Component({
   selector: 'app-painel-de-controle',
@@ -17,10 +17,10 @@ export class PainelDeControleComponent implements OnInit {
   dataSource: IEmprestimo[] = [];
 
   constructor(
-    private controleService: ControleService,
+    private emprestimoService: EmprestimoService,
     private notification: NotificationService,
     private dialog: MatDialog,
-    private bibliotechService: BibliotechService
+   private livroService: LivrosService
   ) {}
   
   ngOnInit(): void {
@@ -28,22 +28,22 @@ export class PainelDeControleComponent implements OnInit {
   }
 
   private inicializarTabela(): void {
-    this.controleService.findAll().subscribe(controle => {
-      console.log(controle)
-      this.dataSource = controle;
-      console.log(controle)
+    this.emprestimoService.findAll().subscribe(emprestimo => {
+      console.log(emprestimo)
+      this.dataSource = emprestimo;
+      console.log(emprestimo)
     });
   }
 
   public deletarEmprestimo(id: string): void {
-    this.controleService.deleteEmprestimo(id).subscribe(response => {
+    this.emprestimoService.deleteEmprestimo(id).subscribe(response => {
       this.notification.showMessage("Empréstimo apagado!");
       this.inicializarTabela();
     });
   }
 
-  public abrirDetalhes(controle: IEmprestimo): void {
-    this.bibliotechService.findBookById(controle.livro).subscribe(livroRetornado => {
+  public abrirDetalhes(emprestimo: IEmprestimo): void {
+    this.livroService.findBookById(emprestimo.livro).subscribe(livroRetornado => {
       this.dialog.open(DetalhesComponent, {
         width: "300px",
         data: livroRetornado
