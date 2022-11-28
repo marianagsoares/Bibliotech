@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IBook } from 'src/app/modelos/interfaces';
-import { BibliotechService } from 'src/app/services/bibliotech.service';
+import { LivrosService } from 'src/app/services/livros.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { UploadService } from 'src/app/services/upload.service';
 
@@ -23,7 +23,7 @@ export class CadastrarLivroComponent implements OnInit {
     private formBuilder: FormBuilder,
     private notification: NotificationService,
     private uploadService: UploadService,
-    private bibliotechService: BibliotechService,
+   private livroService: LivrosService,
     private router: Router
   ) {
     this.formRegisterBook = this.formBuilder.group({
@@ -44,7 +44,7 @@ export class CadastrarLivroComponent implements OnInit {
     if (this.formRegisterBook.valid) {
       const novoLivro: IBook = this.formRegisterBook.value;
       novoLivro.foto = this.photoUrl
-      this.bibliotechService.createBook(novoLivro).subscribe(response => {
+      this.livroService.createBook(novoLivro).subscribe(response => {
         this.notification.showMessage("Livro cadastrado com sucesso");
         this.router.navigate(["livros"]);
         this.initializeTable();
@@ -71,13 +71,13 @@ export class CadastrarLivroComponent implements OnInit {
   }
 
   initializeTable(): void{
-    this.bibliotechService.findAllBooks().subscribe(books =>{
+    this.livroService.findAllBooks().subscribe(books =>{
       this.dataSource = books;
     })
   }
 
   deleteBook(id: string) {
-      this.bibliotechService.deleteBook(id).subscribe(response =>{
+      this.livroService.deleteBook(id).subscribe(response =>{
         this.notification.showMessage("Livro excluído");
         this.initializeTable();
       })

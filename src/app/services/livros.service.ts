@@ -8,7 +8,7 @@ import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class BibliotechService {
+export class LivrosService {
 
   constructor(
     private firestore: AngularFirestore,
@@ -48,22 +48,6 @@ export class BibliotechService {
       })
     )
   }
-
-  public findBorrowById(id: string): Observable<any>{
-    const promise = this.firestore.collection("emprestimos").doc(id).get();
-    return from(promise).pipe(
-      map(doc => {
-        const emprestimo: IEmprestimo = doc.data() as IEmprestimo;
-        emprestimo.id = doc.id;
-        return emprestimo;
-      }),
-      catchError(error => {
-        this.notification.showMessage("Erro ao buscar pelo id");
-        console.error(error);
-        return EMPTY;
-      })
-    )
-  }
   
   public createBook(livro: IBook): Observable<any> {
     const promise = this.firestore.collection("livros").add(livro);
@@ -74,18 +58,6 @@ export class BibliotechService {
         return EMPTY;
       })
     )
-  }
-
-  public updateBorrow(emprestimo: IEmprestimo) {
-    console.log(emprestimo)
-    const promise = this.firestore.collection("emprestimos").doc(emprestimo.id).update(emprestimo);
-    return from(promise).pipe(
-      catchError(error => {
-        this.notification.showMessage("Erro ao atualizar.");
-        console.error(error);
-        return EMPTY;
-      })
-    );
   }
 
   public deleteBook(id: string) {

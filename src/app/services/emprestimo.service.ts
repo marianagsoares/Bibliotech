@@ -33,7 +33,7 @@ export class EmprestimoService {
     )
   }
 
-  public findBorrowById(id: string): Observable<any>{
+  public findById(id: string): Observable<any>{
     const promise = this.firestore.collection("emprestimos").doc(id).get();
     return from(promise).pipe(
       map(doc => {
@@ -58,6 +58,17 @@ export class EmprestimoService {
         return EMPTY;
       })
     )
+  }
+
+  public updateEmprestimo(emprestimo: IEmprestimo) {
+    const promise = this.firestore.collection("emprestimos").doc(emprestimo.id).update(emprestimo);
+    return from(promise).pipe(
+      catchError(error => {
+        this.notification.showMessage("Erro ao atualizar.");
+        console.error(error);
+        return EMPTY;
+      })
+    );
   }
 
   public deleteEmprestimo(id: string) {
