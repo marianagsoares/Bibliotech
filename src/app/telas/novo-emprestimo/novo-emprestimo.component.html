@@ -1,1 +1,40 @@
-
+<cabecalho></cabecalho>
+<div class="container">
+    <h1>Novo emprestimo</h1>
+    <form [formGroup]="formEmprestimo">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Leitor</mat-label>
+            <input type="text" matInput placeholder="Nome do leitor" name="leitor" formControlName="leitor">
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input type="email" matInput placeholder="E-mail" name="email" formControlName="email">
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input type="text" matInput placeholder="telefone" name="telefone" formControlName="telefone">
+        </mat-form-field>
+        <div class="form-select">
+            <mat-form-field appearance="outline" class="select">
+                <mat-select placeholder="Status" formControlName="status" name="status" required>
+                    <mat-option disabled>Selecione o status</mat-option>
+                    <mat-option *ngFor="let status of statusEmprestimos" value={{status}}>
+                        {{status}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="select">
+                <mat-select placeholder="Livro" formControlName="livro" name="livro" required>
+                    <mat-option >Selecione o livro</mat-option>
+                    <mat-option *ngFor="let livro of booksList" value={{livro.id}}>
+                        {{livro.titulo}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-button">
+            <button class="btn-submit" mat-raised-button (click)="createEmprestimo()">Emprestar</button>
+            <button class="full-width btn-close" mat-raised-button routerLink="/controle">Cancelar</button>
+        </div>
+    </form>
+</div>
