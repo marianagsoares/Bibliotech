@@ -1,18 +1,50 @@
-* {
+*{
     box-sizing: border-box;
 }
+
+h1 {
+    font-weight: normal;
+    font-size: 32;
+    margin-top: 0;
+}
+
 table{
     width: 100%;
 }
+
+.mat-elevation-z8 {
+    overflow: auto;
+    height: 350px;
+    background: color #f0f0f1;    
+    border-radius: 10px;
+}
+
+th.mat-header-cell{
+    border-bottom-style: none;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: 
+    #F0F0F0;
+    text-align: center;
+}
+
+td.mat-cell{
+    border-bottom-style: none;
+    color: rgb(49, 46, 46);
+    background-color: 
+    #F0F0F0;
+    text-align: center;
+}
+
 .tabelaControle {
     width: clamp(300px, 80%, 1400px);
     margin: 0 auto;
     padding-top: 90px;
+    border-radius: 10px;
 }
+
 .tabela {
-    height: 70vh;
-    overflow: auto;
-    border-radius: 15px;   
+    width: 100%;  
 }
 
 .botao {
@@ -21,16 +53,7 @@ table{
     bottom: 30px;
     background-color: #d7f034;
 }
-th {
-    font-size: 15px;
-    color: black;
-    font-weight: bold;
-    background-color: rgb(206, 203, 203);
-}
 
-tr {
-    background-color: rgb(206, 203, 203);
-}
 .mat-column-leitor {
     flex: none;
     width: 20%;
@@ -59,19 +82,12 @@ tr {
     flex: none;
     width: 13%;
 }
-th.mat-header-cell{
-    border-bottom-style: none;
-    font-weight: bold;
-    font-size: 15px;
-    background-color: 
-    #F0F0F0;
-    text-align: center;
+
+.avatar {
+    flex: none;
+    width: 80%;
 }
 
-td.mat-cell{
-    border-bottom-style: none;
-    color: rgb(49, 46, 46);
-    background-color: 
-    #F0F0F0;
-    text-align: center;
+.container {
+    padding: 40px;
 }
