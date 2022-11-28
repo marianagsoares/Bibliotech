@@ -16,16 +16,5 @@ export interface IEmprestimo {
     telefone: string;
     status: string;
     livro: string;
-    foto?: string;
-    dataEmprestimo: Date;
-}
-
-export interface Controle {
-    id?: string;
-    leitor: string;
-    livro: string;
     dataEmprestimo: string;
-    status: string;
-    capa: string;
 }
-
