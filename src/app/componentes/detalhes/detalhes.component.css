@@ -1,6 +1,7 @@
 .dialog-container {
     display: flex;
     flex-direction: column;
+    
 }
 
 .dialog-container img {
@@ -16,6 +17,25 @@
 }
 
 .dialog-container span {
-    font-size: 17px;
+    font-size: 13px;
     line-height: 25px;
+}
+
+.botao{
+    display: flex;
+    background-color: #fefefe;
+    width: 30px;
+    border: #fefefe;
+    justify-content: flex-end;
+    margin-left:auto;
+    cursor: pointer;
+    transition: 1.5s all;
+    
+}
+
+.botao:hover{
+    border-radius: 10px;
+    background-color: rgb(221, 215, 215);
+    transition: 1.5s all;
+
 }
