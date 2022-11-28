@@ -1,10 +1,10 @@
 import { IEmprestimo } from 'src/app/modelos/interfaces';
-import { Controle } from './../../modelos/interfaces';
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from 'src/app/services/notification.service';
 import { MatDialog } from '@angular/material/dialog'
 import { DetalhesComponent } from 'src/app/componentes/detalhes/detalhes.component';
 import { ControleService } from 'src/app/services/controle.service';
+import { BibliotechService } from 'src/app/services/bibliotech.service';
 
 @Component({
   selector: 'app-painel-de-controle',
@@ -14,12 +14,13 @@ import { ControleService } from 'src/app/services/controle.service';
 export class PainelDeControleComponent implements OnInit {
 
   displayedColumns = ['leitor', 'livro', 'dataEmprestimo', 'status', 'excluir', 'editar', 'capa'];
-  dataSource: Controle[] = [];
+  dataSource: IEmprestimo[] = [];
 
   constructor(
     private controleService: ControleService,
     private notification: NotificationService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private bibliotechService: BibliotechService
   ) {}
   
   ngOnInit(): void {
@@ -41,10 +42,12 @@ export class PainelDeControleComponent implements OnInit {
     });
   }
 
-  public abrirDetalhes(controle: Controle): void {
-    this.dialog.open(DetalhesComponent, {
-      width: "300px",
-      data: controle
+  public abrirDetalhes(controle: IEmprestimo): void {
+    this.bibliotechService.findBookById(controle.livro).subscribe(livroRetornado => {
+      this.dialog.open(DetalhesComponent, {
+        width: "300px",
+        data: livroRetornado
+      });
     });
   }
 

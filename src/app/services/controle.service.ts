@@ -1,9 +1,9 @@
-import { Controle } from './../modelos/interfaces';
 import { Observable, from, EMPTY } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { NotificationService } from './notification.service';
 import { catchError, map } from 'rxjs/operators';
+import { IEmprestimo } from '../modelos/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +20,9 @@ export class ControleService {
     return from(promise).pipe(
       map((response: any) => {
         return response.docs.map((doc: any) => {
-          const controle: Controle = doc.data() as Controle;
-          controle.id = doc.id;
-          return controle;
+          const emprestimo: IEmprestimo = doc.data() as IEmprestimo;
+          emprestimo.id = doc.id;
+          return emprestimo;
         })
       }),
       catchError(error => {
@@ -48,9 +48,9 @@ export class ControleService {
     const promise = this.firestore.collection("emprestimos").doc(id).get();
     return from(promise).pipe(
       map(doc => {
-        const controle: Controle = doc.data() as Controle;
-        controle.id = doc.id;
-        return controle;
+        const emprestimo: IEmprestimo = doc.data() as IEmprestimo;
+        emprestimo.id = doc.id;
+        return emprestimo;
       }),
       catchError(error => {
         this.notification.showMessage("Erro ao buscar pelo id");
@@ -59,16 +59,4 @@ export class ControleService {
       })
     );
   }
-
-  public atulizarEmprestimo(controle: Controle) {
-    const promise = this.firestore.collection("emprestimos").doc(controle.id).update(controle);
-    return from(promise).pipe(
-      catchError(error => {
-        this.notification.showMessage("Erro ao atualizar Empréstimo.");
-        console.error(error);
-        return EMPTY;
-      })
-    );
-  }
-
 }

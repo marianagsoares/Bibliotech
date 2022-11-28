@@ -33,6 +33,22 @@ export class BibliotechService {
     )
   }
 
+  public findBookById(id: string): Observable<any>{
+    const promise = this.firestore.collection("livros").doc(id).get();
+    return from(promise).pipe(
+      map(doc => {
+        const book: IBook = doc.data() as IBook;
+        book.id = doc.id;
+        return book;
+      }),
+      catchError(error => {
+        this.notification.showMessage("Erro ao buscar pelo id");
+        console.error(error);
+        return EMPTY;
+      })
+    )
+  }
+
   public findBorrowById(id: string): Observable<any>{
     const promise = this.firestore.collection("emprestimos").doc(id).get();
     return from(promise).pipe(
