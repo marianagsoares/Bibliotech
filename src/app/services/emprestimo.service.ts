@@ -8,41 +8,25 @@ import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class BibliotechService {
+export class EmprestimoService {
 
   constructor(
     private firestore: AngularFirestore,
-    private notification: NotificationService
+    private notification: NotificationService  
   ) { }
 
-  public findAllBooks(): Observable<any> {
-    const promise = this.firestore.collection("livros").get();
+  public findAll(): Observable<any> {
+    const promise = this.firestore.collection("emprestimos").get();
     return from(promise).pipe(
       map((response: any) => {
         return response.docs.map((doc: any) => {
-          const book: IBook = doc.data() as IBook;
-          book.id = doc.id;
-          return book;
+          const emprestimo: IEmprestimo = doc.data() as IEmprestimo;
+          emprestimo.id = doc.id;
+          return emprestimo;
         })
       }),
       catchError(error => {
         this.notification.showMessage("Erro ao buscar dados.");
-        console.error(error);
-        return EMPTY;
-      })
-    )
-  }
-
-  public findBookById(id: string): Observable<any>{
-    const promise = this.firestore.collection("livros").doc(id).get();
-    return from(promise).pipe(
-      map(doc => {
-        const book: IBook = doc.data() as IBook;
-        book.id = doc.id;
-        return book;
-      }),
-      catchError(error => {
-        this.notification.showMessage("Erro ao buscar pelo id");
         console.error(error);
         return EMPTY;
       })
@@ -65,31 +49,19 @@ export class BibliotechService {
     )
   }
   
-  public createBook(livro: IBook): Observable<any> {
-    const promise = this.firestore.collection("livros").add(livro);
+  public createEmprestimo(emprestimo: IEmprestimo): Observable<any> {
+    const promise = this.firestore.collection("emprestimos").add(emprestimo);
     return from(promise).pipe(
       catchError(error => {
-        this.notification.showMessage("Livro não pode ser cadastrado");
+        this.notification.showMessage("Emprestimo não pode ser cadastrado");
         console.error(error);
         return EMPTY;
       })
     )
   }
 
-  public updateBorrow(emprestimo: IEmprestimo) {
-    console.log(emprestimo)
-    const promise = this.firestore.collection("emprestimos").doc(emprestimo.id).update(emprestimo);
-    return from(promise).pipe(
-      catchError(error => {
-        this.notification.showMessage("Erro ao atualizar.");
-        console.error(error);
-        return EMPTY;
-      })
-    );
-  }
-
-  public deleteBook(id: string) {
-    const promise = this.firestore.collection("livros").doc(id).delete();
+  public deleteEmprestimo(id: string) {
+    const promise = this.firestore.collection("emprestimos").doc(id).delete();
     return from(promise).pipe(
       catchError(error => {
         this.notification.showMessage("Erro ao excluir.");
@@ -98,4 +70,5 @@ export class BibliotechService {
       })
     );
   }
+
 }

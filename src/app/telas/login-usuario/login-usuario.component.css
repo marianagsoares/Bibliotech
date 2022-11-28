@@ -16,8 +16,8 @@
 
 .login-form {
     box-sizing: border-box;
-    width: clamp(300px, 90%, 800px);
-    height: clamp(300px, 90%, 700px);
+    width: clamp(300px, 90%, 750px);
+    height: clamp(300px, 90%, 650px);
     background: #FFFFFF;
     border-radius: 30px;
     padding: 30px 50px;

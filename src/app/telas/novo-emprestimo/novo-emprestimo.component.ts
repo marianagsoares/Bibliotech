@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IBook, IEmprestimo } from 'src/app/modelos/interfaces';
+import { BibliotechService } from 'src/app/services/bibliotech.service';
+import { EmprestimoService } from 'src/app/services/emprestimo.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-novo-emprestimo',
@@ -7,9 +13,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NovoEmprestimoComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  public formEmprestimo: FormGroup;
+  public isLoadUpload: boolean = false;
+  private foto: string = "";
+  booksList: IBook[] = [];
+  statusEmprestimos: string[] = [
+    "Pendente", "Devolvido"
+  ]
+  constructor(
+    fb: FormBuilder,
+    private notification: NotificationService,
+    private emprestimoService: EmprestimoService,
+    private bibliotechService: BibliotechService,
+    private router: Router,
+  ) { 
+    this.formEmprestimo = fb.group({
+    leitor: ["", [Validators.required]],
+    email: ["", [Validators.required]],
+    telefone: ["", [Validators.required]],
+    status: ["", [Validators.required]],
+    livro: ["", [Validators.required]],
+    // foto: ["", [Validators.required]],
+    dataEmprestimo: new Date
+    })
   }
 
+  ngOnInit(): void {
+    this.initializeFields()
+  }
+
+  public createEmprestimo(): void {
+    if(this.formEmprestimo.valid) {
+      const emprestimo: IEmprestimo = this.formEmprestimo.value;
+      // emprestimo.foto = this.foto;
+      this.emprestimoService.createEmprestimo(emprestimo).subscribe(response => {
+        this.notification.showMessage("Cadastrado com sucesso.");
+        this.router.navigate(["/controle"]);
+      });
+    }
+    else {
+      this.notification.showMessage("Dados inválidos.");
+    }
+  }
+
+  private initializeFields(): void {
+    this.bibliotechService.findAllBooks().subscribe(books => {
+      this.booksList = books;
+    })
+  }
+
+  
 }
