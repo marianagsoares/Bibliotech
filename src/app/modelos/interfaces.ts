@@ -1,3 +1,5 @@
+import { Data } from "@angular/router";
+
 export interface IBook {
     id?: string;
     titulo: string;
@@ -15,5 +17,14 @@ export interface IEmprestimo {
     status: string;
     livro: string;
     foto?: string;
+}
+
+export interface Controle {
+    id?: string;
+    leitor: string;
+    livro: string;
+    dataEmprestimo: string;
+    status: string;
+    capa: string;
 }
 

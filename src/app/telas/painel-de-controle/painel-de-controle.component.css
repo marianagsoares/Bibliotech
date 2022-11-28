@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+}
+table{
+    width: 100%;
+}
+.tabelaControle {
+    width: clamp(300px, 80%, 1400px);
+    margin: 0 auto;
+    padding-top: 90px;
+}
+.tabela {
+    height: 70vh;
+    overflow: auto;
+    border-radius: 15px;   
+}
+
+.botao {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    background-color: #d7f034;
+}
+th {
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+    background-color: rgb(206, 203, 203);
+}
+
+tr {
+    background-color: rgb(206, 203, 203);
+}
+.mat-column-leitor {
+    flex: none;
+    width: 20%;
+}
+.mat-column-livro {
+    flex: none;
+    width: 13%;
+}
+.mat-column-dataEmprestimo {
+    flex: none;
+    width: 13%;
+}
+.mat-column-status {
+    flex: none;
+    width: 13%;
+}
+.mat-column-excluir {
+    flex: none;
+    width: 13%;
+}
+.mat-column-editar {
+    flex: none;
+    width: 13%;
+}
+.mat-column-capa {
+    flex: none;
+    width: 13%;
+}
+th.mat-header-cell{
+    border-bottom-style: none;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: 
+    #F0F0F0;
+    text-align: center;
+}
+
+td.mat-cell{
+    border-bottom-style: none;
+    color: rgb(49, 46, 46);
+    background-color: 
+    #F0F0F0;
+    text-align: center;
+}
