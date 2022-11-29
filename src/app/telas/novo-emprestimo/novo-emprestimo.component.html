@@ -4,15 +4,16 @@
     <form [formGroup]="formEmprestimo">
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Leitor</mat-label>
-            <input type="text" matInput placeholder="Nome do leitor" name="leitor" formControlName="leitor">
+            <input required type="text" matInput placeholder="Nome do leitor" name="leitor" formControlName="leitor">
         </mat-form-field>
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>E-mail</mat-label>
-            <input type="email" matInput placeholder="E-mail" name="email" formControlName="email">
+            <input required type="email" matInput placeholder="E-mail" name="email" formControlName="email">
         </mat-form-field>
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Telefone</mat-label>
-            <input type="text" matInput placeholder="telefone" name="telefone" formControlName="telefone" mask="(00)00000-0000">
+            <input required type="text" matInput placeholder="telefone" name="telefone" formControlName="telefone"
+                mask="(00)00000-0000">
         </mat-form-field>
         <div class="form-select">
             <mat-form-field appearance="outline" class="select">
@@ -25,7 +26,7 @@
             </mat-form-field>
             <mat-form-field appearance="outline" class="select">
                 <mat-select placeholder="Livro" formControlName="livroId" name="livroId" required>
-                    <mat-option >Selecione o livro</mat-option>
+                    <mat-option>Selecione o livro</mat-option>
                     <mat-option *ngFor="let livro of booksList" value={{livro.id}}>
                         {{livro.titulo}}
                     </mat-option>

@@ -4,7 +4,7 @@
 
 h1 {
     font-weight: normal;
-    font-size: 32;
+    font-size: 32px;
     margin-top: 0;
 }
 
@@ -14,7 +14,7 @@ table{
 
 .mat-elevation-z8 {
     overflow: auto;
-    height: 350px;
+    height: 400px;
     background: color #f0f0f1;    
     border-radius: 10px;
 }
@@ -34,17 +34,19 @@ td.mat-cell{
     background-color: 
     #F0F0F0;
     text-align: center;
+    height: 80px;
 }
 
 .tabelaControle {
     width: clamp(300px, 80%, 1400px);
     margin: 0 auto;
-    padding-top: 90px;
+    padding-top: 20px;
     border-radius: 10px;
 }
 
 .tabela {
-    width: 100%;  
+    width: 100%; 
+    background-color: #F0F0F0; 
 }
 
 .botao {
@@ -86,6 +88,7 @@ td.mat-cell{
 .avatar {
     flex: none;
     width: 80%;
+    
 }
 
 .container {

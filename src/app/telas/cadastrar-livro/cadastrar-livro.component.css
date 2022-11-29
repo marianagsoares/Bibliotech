@@ -96,6 +96,8 @@ label {
     color: white;
     text-align: center;
     cursor: pointer;
+    min-width: 64px;
+    line-height: 36px;
 }
 
 .btn-submit:hover {
@@ -115,9 +117,6 @@ label:hover {
     border-radius: 50px;
 }
 
-.btn-delete:hover {
-    background-color: rgba(255, 0, 0, 0.458);
-}
 
 .progress-bar {
     height: 20px;
