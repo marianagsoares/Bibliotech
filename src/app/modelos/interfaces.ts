@@ -15,6 +15,8 @@ export interface IEmprestimo {
     email: string;
     telefone: string;
     status: string;
-    livro: string;
     dataEmprestimo: string;
+    livroId: string;
+    livroCapa: string;
+    livroTitulo: string;
 }

@@ -43,14 +43,11 @@ export class PainelDeControleComponent implements OnInit {
   }
 
   public abrirDetalhes(emprestimo: IEmprestimo): void {
-    this.livroService.findBookById(emprestimo.livro).subscribe(livroRetornado => {
+    this.livroService.findBookById(emprestimo.livroId).subscribe(livroRetornado => {
       this.dialog.open(DetalhesComponent, {
         width: "300px",
         data: livroRetornado
       });
     });
   }
-
-  
-
 }

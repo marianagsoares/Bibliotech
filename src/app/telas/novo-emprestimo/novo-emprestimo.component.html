@@ -24,7 +24,7 @@
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline" class="select">
-                <mat-select placeholder="Livro" formControlName="livro" name="livro" required>
+                <mat-select placeholder="Livro" formControlName="livroId" name="livroId" required>
                     <mat-option >Selecione o livro</mat-option>
                     <mat-option *ngFor="let livro of booksList" value={{livro.id}}>
                         {{livro.titulo}}

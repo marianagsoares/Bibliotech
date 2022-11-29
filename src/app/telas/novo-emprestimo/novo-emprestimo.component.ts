@@ -32,7 +32,7 @@ export class NovoEmprestimoComponent implements OnInit {
     email: ["", [Validators.required]],
     telefone: ["", [Validators.required]],
     status: ["", [Validators.required]],
-    livro: ["", [Validators.required]],
+    livroId: ["", [Validators.required]],
     // foto: ["", [Validators.required]],
     dataEmprestimo: new Date
     })
@@ -45,11 +45,15 @@ export class NovoEmprestimoComponent implements OnInit {
   public createEmprestimo(): void {
     if(this.formEmprestimo.valid) {
       const emprestimo: IEmprestimo = this.formEmprestimo.value;
-      // emprestimo.foto = this.foto;
-      this.emprestimoService.createEmprestimo(emprestimo).subscribe(response => {
-        this.notification.showMessage("Cadastrado com sucesso.");
-        this.router.navigate(["/controle"]);
-      });
+      this.livroService.findBookById(emprestimo.livroId).subscribe((livroSelecionado: IBook) => {
+        emprestimo.livroCapa = livroSelecionado.foto || "";
+        emprestimo.livroTitulo = livroSelecionado.titulo;
+
+        this.emprestimoService.createEmprestimo(emprestimo).subscribe(response => {
+          this.notification.showMessage("Cadastrado com sucesso.");
+          this.router.navigate(["/controle"]);
+        });
+      })
     }
     else {
       this.notification.showMessage("Dados inválidos.");
