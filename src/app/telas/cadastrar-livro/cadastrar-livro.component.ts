@@ -23,7 +23,7 @@ export class CadastrarLivroComponent implements OnInit {
     private formBuilder: FormBuilder,
     private notification: NotificationService,
     private uploadService: UploadService,
-   private livroService: LivrosService,
+    private livroService: LivrosService,
     private router: Router
   ) {
     this.formRegisterBook = this.formBuilder.group({
@@ -36,8 +36,6 @@ export class CadastrarLivroComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeTable();
-
-
   }
 
   public registerBook(): void {
