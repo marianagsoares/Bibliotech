@@ -10,7 +10,7 @@
             </ng-container>
             <ng-container matColumnDef="livro">
                 <th mat-header-cell *matHeaderCellDef> Livro </th>
-                <td mat-cell *matCellDef="let controle">{{controle.livro}}
+                <td mat-cell *matCellDef="let controle">{{controle.livroTitulo}}
                 </td>
             </ng-container>
             <ng-container matColumnDef="dataEmprestimo">
@@ -43,7 +43,7 @@
                 <th mat-header-cell *matHeaderCellDef> Capa </th>
                 <td mat-cell *matCellDef="let controle ">
                     <button mat-icon-button (click)="abrirDetalhes(controle)">
-                        <img class="avatar" src="{{ controle.capa | livro }}" alt="Avatar">
+                        <img class="avatar" src="{{ controle.livroCapa | livro }}" alt="Avatar">
                     </button>
                 </td>
             </ng-container>

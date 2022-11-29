@@ -46,10 +46,14 @@ export class EditarEmprestimoComponent implements OnInit {
 
   public updateRentBook(form: NgForm): void {
     if (form.valid) {
-      this.emprestimoService.updateEmprestimo(this.emprestimo).subscribe(() => {
-        this.notification.showMessage("Atualizado com sucesso.");
-        this.redirectToControl()
-      });
+      this.livroService.findBookById(this.emprestimo.livroId).subscribe((livroSelecionado: IBook) =>{
+        this.emprestimo.livroCapa = livroSelecionado.foto || ""
+        this.emprestimo.livroTitulo = livroSelecionado.titulo
+        this.emprestimoService.updateEmprestimo(this.emprestimo).subscribe(() => {
+          this.notification.showMessage("Atualizado com sucesso.");
+          this.redirectToControl()
+        });
+      })
     }
     else {
       this.notification.showMessage("Dados inválidos.");
