@@ -47,7 +47,7 @@
                 <mat-label>Autor</mat-label>
                 <input type="text" matInput placeholder="Autor" formControlName="autor">
             </mat-form-field>
-            <label>Carregar imagem
+            <label class="carregar-img">Carregar imagem
                     <input type="file" class="upload-photo" (change)="uploadFile($event)">
             </label>
             <mat-progress-bar  class="progress-bar" *ngIf="isLoadUpload"></mat-progress-bar>

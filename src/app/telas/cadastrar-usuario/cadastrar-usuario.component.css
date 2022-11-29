@@ -39,6 +39,7 @@
     border: none;
     box-shadow: 0 0 10px #7b7b7b;
     margin-bottom: 40px;
+    cursor: pointer;
 }
 
 .google h2{
@@ -60,6 +61,7 @@ font-weight: 400;
     border: none;
     box-shadow: 0 0 10px #7b7b7b;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .login-form form {
